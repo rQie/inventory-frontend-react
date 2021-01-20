@@ -1,8 +1,13 @@
 import React from 'react';
 import axios from 'axios'
 
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+
 import './App.css';
 import StockEventsTable from './components/StockEventsTable'
+import AddStockEvent from './components/AddStockEvent'
+import AddProduct from './components/AddProduct'
+import Nav from './components/Nav'
 
 class App extends React.Component{
   state = {
@@ -37,11 +42,26 @@ class App extends React.Component{
       <div className="App">
         <h1>Barcode</h1>
 
-        <StockEventsTable
-          products={products}
-          stockEvents={stockEvents}
-        />
+        <BrowserRouter>
+          <Nav />
+          <Switch>
+            <Route exact path="/products">
+              <AddProduct />
+            </Route>
 
+            <Route exact path="/stock/add">
+              <AddStockEvent products={products} />
+            </Route>
+
+            <Route exact path="/stock">
+              <StockEventsTable
+                products={products}
+                stockEvents={stockEvents}
+              />
+            </Route>
+
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
