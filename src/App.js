@@ -35,7 +35,7 @@ class App extends React.Component{
 
     return (
       <div className="App">
-        <h1>The Stock App</h1>
+        <h1>Barcode</h1>
 
         <StockEventsTable
           products={products}
